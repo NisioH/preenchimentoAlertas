@@ -6,8 +6,8 @@ import textwrap
 from datetime import datetime
 
 ARQUIVO_DADOS = "dados.xlsx"
-# /usr/share/fonts/liberation-sans/LiberationSans-Bold.ttf - Linux
-FONTE_CAMINHO = "arialbd.ttf"
+#FONTE_CAMINHO = "/usr/share/fonts/liberation-sans/LiberationSans-Bold.ttf" # Uso no Linux
+FONTE_CAMINHO = "arialbd.ttf" # Uso no Windows
 TAMANHO_FONTE = 24
 POSICAO_DATA_HOJE = (1100, 2200)
 
