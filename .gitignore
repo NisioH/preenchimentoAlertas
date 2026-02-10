@@ -21,6 +21,7 @@ dados.xlsx
 # Project-specific
 Alertas_Gerados/
 dados.xlsx
+poppler-windows/
 
 # OS
 .DS_Store
