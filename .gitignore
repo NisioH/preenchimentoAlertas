@@ -17,10 +17,10 @@ env/
 *.swo
 *~
 *.pdf
-dados.xlsx
+*.xlsx
 # Project-specific
 Alertas_Gerados/
-dados.xlsx
+
 poppler-windows/
 
 # OS

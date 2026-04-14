@@ -24,7 +24,7 @@ POSICAO_DATA_HOJE = (1100, 2200)
 posicoes_base = {
     "Nome": (660, 645),
     "CPF": (1380, 645),
-    "DataOcorrencia": (250, 688),
+    "DataOcorrencia": (285, 690),
 }
 
 def obter_data_extenso():
@@ -63,7 +63,7 @@ def processar_geral(df_processar, pdf_nome, dicionario_posicoes, sufixo_nome):
         for campo, posicao in dicionario_posicoes.items():
             if campo in df_processar.columns:
                 valor_exibir = str(linha[campo])
-                wrapper = textwrap.TextWrapper(width=70)
+                wrapper = textwrap.TextWrapper(width=110)
                 texto_formatado = wrapper.fill(text=valor_exibir)
                 draw.multiline_text(posicao, texto_formatado, font=fonte, fill=(0, 0, 0), spacing=5)
 
@@ -85,11 +85,13 @@ def carregar_e_padronizar():
 
 def alerta_02horas():
     df = carregar_e_padronizar()
-    processar_geral(df, 'AlertaEducativo02horas.pdf', posicoes_base, "02Horas")
+    df_agrupado = df.groupby(['Nome', 'CPF'])['DataOcorrencia'].apply(lambda x: ', '.join(x)).reset_index()
+    processar_geral(df_agrupado, 'AlertaEducativo02horas.pdf', posicoes_base, "02Horas")
 
 def alerta_04horas():
     df = carregar_e_padronizar()
-    processar_geral(df, 'AlertaEducativo04horas.pdf', posicoes_base, "04Horas")
+    df_agrupado = df.groupby(['Nome', 'CPF'])['DataOcorrencia'].apply(lambda x: ', '.join(x)).reset_index()
+    processar_geral(df_agrupado, 'AlertaEducativo04horas.pdf', posicoes_base, "04Horas")
 
 def alerta_intervalo():
     df = carregar_e_padronizar()
@@ -101,7 +103,7 @@ def alerta_intervalo():
         posicoes_intervalo = {
             "Nome": (660, 645),
             "CPF": (1380, 645),
-            "DataEstouroInvertalo": (300, 720),
+            "DataEstouroInvertalo": (285, 690),
         }
         processar_geral(df_agrupado, 'AlertaEducativoIntervalo.pdf', posicoes_intervalo, "Intervalo")
     else:
